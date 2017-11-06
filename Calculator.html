@@ -1,0 +1,273 @@
+<html>
+<head><title>Calculator By Deepak Dwivedi</title>
+
+<script type="text/javascript">
+var ans=-1;
+var removal=-2;
+
+function display(x)	//Numeral input function
+{
+	if(ans!=form1.txt.value||ans==removal)
+		form1.txt.value=form1.txt.value+x;
+	else
+	{
+		clearall();
+		form1.txt.value=x;
+	}
+	removal=-2;
+}
+
+
+function answer()
+{
+	if(ans==textbox1.value)
+	{
+		clearall();
+		form1.txt.value=ans;
+	}
+	else
+	{
+		form1.txt.value=form1.txt.value+ans;
+	}
+	removal=ans;
+}
+
+
+function square()
+{
+
+	textbox1.value=Math.pow(textbox1.value,2);
+	ans=textbox1.value;
+}
+
+function equal()
+{
+	ans=eval(textbox1.value);
+	if("Infinity"==ans)
+	{
+		alert("Can't Divide By Zero");
+	}
+	textbox1.value=eval(textbox1.value);
+}
+
+
+function clearall()//CE function
+{
+	form1.txt.value='';
+}
+
+
+function backspace()//Backspace function
+{
+	form1.txt.value=form1.txt.value.slice(0,form1.txt.value.length-1);
+}
+
+window.onload=fir;
+function fir()
+{
+	here:
+		var name=prompt("Hi I am Deepak, Whats Your name?");
+		if(name!="null" && name!="")
+		{
+		var hi=document.getElementById("trial");
+		hi.innerHTML= "Hi "+name+"!";
+		}
+		else
+			goto:here;
+}
+
+function fact()
+{
+	var fac=1;
+	for(var i=1;i<=textbox1.value;i++)
+		fac*=i;
+	textbox1.value=fac;
+	ans=textbox1.value;
+}
+
+function natulog()
+{
+	textbox1.value=Math.log(textbox1.value);
+	ans=textbox1.value;
+}
+function sqrt()
+{
+	textbox1.value=Math.sqrt(textbox1.value);
+	ans=textbox1.value;
+}
+
+function sine()
+{
+	textbox1.value=Math.sin(textbox1.value);
+	ans=textbox1.value;
+}
+
+function cos()
+{
+	textbox1.value=Math.cos(textbox1.value);
+	ans=textbox1.value;
+}
+
+
+function cuberoot()
+{
+	textbox1.value=Math.pow(textbox1.value,1/3);
+	ans=textbox1.value;
+}
+function runscript(e)
+{
+	if(event.key==='Enter')
+	{
+		e.preventDefault();	
+		textbox1.value=eval(textbox1.value);
+		
+		return false;
+	}
+}
+
+</script>
+<style>
+#textbox1
+{
+	text-align:right;
+	width:490px;
+	height: 110px;
+	margin-left: 10px;
+	margin-right: auto;
+	border-radius:20px;
+	border:1.5px solid black;
+	margin-top:3px;
+	margin-bottom:6px;
+	font-size: 50px;
+}
+
+#calc
+{
+	margin:auto auto auto auto;
+	border: 3px solid black;
+	width: 510;
+	border-radius: 20px;
+	background: #c6c6c6;
+}
+
+.clearclass
+{
+	margin-right: 14px;
+	margin-bottom: 3px;
+	margin-left: 3px;
+	background-color: #F0FFFF;
+	width:180px;
+	height: 80px;
+	border-radius: 100px;
+	font-weight: bold;
+	font-size: 25px;
+	background-color: #0066ff;
+}
+.allbutton
+{
+	width:81px;
+	height: 81px;
+	border-radius: 100px;
+	margin-right: 14px;
+	margin-bottom: 3px;
+	margin-left: 3px;
+	background-color: #F0FFFF;
+	font-weight: bold;
+	font-size: 25px;
+}
+
+.some
+{
+	width:81px;
+	height: 81px;
+	border-radius: 100px;
+	margin-right: 14px;
+	margin-bottom: 3px;
+	margin-left: 3px;
+	background-color: #0066ff;
+	font-weight: bold;
+	font-size: 30px;
+}
+
+.firstrow
+{
+	width:81px;
+	height: 81px;
+	border-radius: 100px;
+	margin-right: 14px;
+	margin-bottom: 3px;
+	margin-left: 3px;
+	background-color: #1aff1a;
+	font-weight: bolder;
+	font-size: 25px;
+}
+
+.firstrow:hover
+{
+	background-color: #00cccc;
+	border: 1.5px solid white;
+
+}
+.allbutton:hover
+{
+	background-color: #00cccc;
+	border: 1.5px solid white;
+
+}
+
+.clearclass:hover
+{
+	background-color: #00cccc;
+	border: 1.5px solid white;
+}
+
+.some:hover
+{
+	background-color: #00cccc;
+	border: 1.5px solid white;
+}
+</style>
+</head>
+
+
+<body bgcolor="#3399ff">
+<div id="calc">
+<span style="font-weight: bold; font-size: 20px; margin-left: 130px;"><span id="trial">Hey Visitor!</span>I am your Calculator</span>
+	<form id="form1" name="form1">
+		<input id="textbox1" type="textbox" name="txt" onkeypress="return runscript(event)"><br>
+		<input class="firstrow" type="button" name="parenleft" value="("  onclick="display(parenleft.value)">
+		<input type="button" class="firstrow" name="parenright" value=")" onclick="display(parenright.value)">
+		<input type="button" class="firstrow" value="Del" onclick="backspace()">
+		<input type="button" class="firstrow" value="x&sup2" onclick="square()">
+		<input class="firstrow" type="button" value="&#8730;" onclick="sqrt()"><br>
+		<input type="button" class="clearclass" value="Clear All" onclick="clearall()">
+		<input type="button" class="some" name="mod" value="%" onclick="display(mod.value)">
+		<input class="some" type="button" name="divide" value="/" onclick="display(divide.value)">
+		<input class="firstrow" type="button" value="&#8731" onclick="cuberoot()"><br>
+		<input type="button" class="allbutton" name="btn9" value="9" onclick="display(btn9.value)">
+		<input type="button" class="allbutton" name="btn8" value="8" onclick="display(btn8.value)">
+		<input type="button" class="allbutton" name="btn7" value="7" onclick="display(btn7.value)">
+		<input type="button" class="some" name="multiply" value="*" onclick="display(multiply.value)">
+		<input class="firstrow" type="button" value="ln" onclick="natulog()"><br>
+		<input type="button" class="allbutton" name="btn6" value="6" onclick="display(btn6.value)">
+		<input type="button" class="allbutton" name="btn5" value="5" onclick="display(btn5.value)">
+		<input type="button" class="allbutton" name="btn4" value="4" onclick="display(btn4.value)">
+		<input type="button" class="some" name="subtract" value="-" onclick="display(subtract.value)">
+		<input class="firstrow" type="button" value="!" onclick="fact()"><br>
+		<input type="button" class="allbutton" name="btn3" value="3" onclick="display(btn3.value)">
+		<input type="button" class="allbutton" name="btn2" value="2" onclick="display(btn2.value)">
+		<input type="button" class="allbutton" name="btn1" value="1" onclick="display(btn1.value)">
+		<input class="some" type="button" name="add" value="+" onclick="display(add.value)">
+		<input class="firstrow" type="button" value="sine" onclick="sine()"><br>
+		<input type="button" class="allbutton" name="dot" value="." onclick="display(dot.value)">
+		<input type="button" class="allbutton" name="btn0" value="0" onclick="display(btn0.value)">
+		<input type="button" class="allbutton" value="Ans" onclick="answer()">
+		<input type="button" class="some" name="equals" value="=" onclick="equal()">
+		<input class="firstrow" type="button" value="cos" onclick="cos()">
+		
+	
+</form>
+</div>
+<h3 style="text-align: center;">Copyrights &copy; Deepak Dwivedi, CSE, NITJ</h3>
+</body>
+</html>
